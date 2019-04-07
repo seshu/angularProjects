@@ -1,0 +1,56 @@
+<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+
+<div id="demo" class="collapse">
+Lorem ipsum dolor text....
+</div>
+<h1>If Else</h1>
+<button (click)="type='list'">List</button>
+<button (click)="type='table'">Table</button>
+<span *ngIf="type === 'list' then listView; else tableView"></span>
+<ng-template #listView>
+  <ul>
+    <li *ngFor="let student of students">{{student|lowercase}}</li>
+  </ul>
+</ng-template>
+<ng-template #tableView>
+  <table border="3">
+    <tr >
+      <th>Student</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>{{student | uppercase}}</td>
+    </tr>
+  </table>
+</ng-template>
+<hr>
+<h1>Switch Case</h1>
+<button (click)="flag='list2'">List</button>
+<button (click)="flag='table2'">Table</button>
+<button (click)="flag='headers'">Headers</button>
+<button (click)="flag='normal'">Normal</button>
+<span [ngSwitch]="flag">
+  <ng-template [ngSwitchCase]="'list2'">
+    <ul>
+      <li *ngFor="let student of students">{{student|lowercase}}</li>
+    </ul>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'table2'">
+    <table border="3">
+      <tr >
+        <th>Student</th>
+      </tr>
+      <tr *ngFor="let student of students">
+        <td>{{student | uppercase}}</td>
+      </tr>
+    </table>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'headers'">
+      <h3 *ngFor="let student of students">{{student|uppercase}}</h3>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'normal'">
+      <h6 *ngFor="let student of students">{{student|lowercase}}</h6>
+  </ng-template>
+  <ng-template ngSwitchDefault>
+    <br><b>Please select any above option.</b>
+  </ng-template>
+</span>
